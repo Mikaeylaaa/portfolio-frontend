@@ -6,29 +6,31 @@ import Grid from "@mui/material/Grid";
 import axios from "axios";
 import { Box, Checkbox, FormControlLabel, Typography } from "@mui/material";
 import Link from "next/link";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState, loginRequest } from "../../../../store";
+import { useRouter } from "next/router";
 
-const LoginPage = () => {
+const LoginPage: React.FC = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const router = useRouter();
+
+  const dispatch = useDispatch();
+  const loading = useSelector((state: RootState) => state.auth.loading);
+  const error = useSelector((state: RootState) => state.auth.error);
+
+  const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setEmail(event.target.value);
+  };
+
+  const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setPassword(event.target.value);
+  };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const data = new FormData(e.currentTarget);
-    console.log({
-      email: data.get("email"),
-      password: data.get("password"),
-    });
-    console.log("Redirected to register");
-
-    // try {
-    //   const response = await axios.post('/api/register', {
-    //     email,
-    //     password,
-    //   });
-    //   console.log('User registered successfully:', response.data);
-    // } catch (error) {
-    //   console.error('Registration failed:', error);
-    // }
+    dispatch(loginRequest({ email, password }));
+    await router.push(`/bidding`);
   };
 
   return (
@@ -65,7 +67,7 @@ const LoginPage = () => {
                     fullWidth
                     autoComplete="email"
                     value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+                    onChange={handleEmailChange}
                   />
                 </Grid>
                 <Grid item xs={12}>
@@ -76,7 +78,7 @@ const LoginPage = () => {
                     type="password"
                     autoComplete="current-password"
                     value={password}
-                    onChange={(e) => setPassword(e.target.value)}
+                    onChange={handlePasswordChange}
                   />
                 </Grid>
                 <Grid item xs={12}>
@@ -95,6 +97,7 @@ const LoginPage = () => {
               >
                 Log In
               </Button>
+              {error && <p>{error}</p>}
             </form>
             <Grid container>
               <Grid item xs>

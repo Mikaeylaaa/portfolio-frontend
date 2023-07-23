@@ -1,34 +1,39 @@
 // pages/Register.tsx
 import React, { useState } from "react";
-import TextField from "@mui/material/TextField";
-import Button from "@mui/material/Button";
-import Grid from "@mui/material/Grid";
-import axios from "axios";
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, Grid, Button, TextField } from "@mui/material";
 import Link from "next/link";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../../../store/types";
+import { registerRequest } from "../../../../store/actions/registerAuthActions";
+import Toaster from "@/app/common/components/Toaster";
 
-const RegistrationPage = () => {
+const RegistrationPage: React.FC = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [toasterOpen, setToasterOpen] = useState(false);
+
+  const dispatch = useDispatch();
+  const loading = useSelector((state: RootState) => state.auth.loading);
+  const error = useSelector((state: RootState) => state.auth.error);
+
+  const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setEmail(event.target.value);
+  };
+
+  const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setPassword(event.target.value);
+  };
+
+  const handleToasterClose = () => {
+    setToasterOpen(false);
+  };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const data = new FormData(e.currentTarget);
-    console.log({
-      email: data.get("email"),
-      password: data.get("password"),
-    });
-    console.log("Redirected to register");
-
-    // try {
-    //   const response = await axios.post('/api/register', {
-    //     email,
-    //     password,
-    //   });
-    //   console.log('User registered successfully:', response.data);
-    // } catch (error) {
-    //   console.error('Registration failed:', error);
-    // }
+    dispatch(registerRequest({ email, password }));
+    setToasterOpen(true); // Show the toaster on successful registration
+    setEmail(""); // Clear the text fields after successful registration
+    setPassword("");
   };
 
   return (
@@ -64,7 +69,7 @@ const RegistrationPage = () => {
                     variant="outlined"
                     fullWidth
                     value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+                    onChange={handleEmailChange}
                   />
                 </Grid>
                 <Grid item xs={12}>
@@ -74,7 +79,7 @@ const RegistrationPage = () => {
                     fullWidth
                     type="password"
                     value={password}
-                    onChange={(e) => setPassword(e.target.value)}
+                    onChange={handlePasswordChange}
                   />
                 </Grid>
               </Grid>
@@ -87,7 +92,13 @@ const RegistrationPage = () => {
               >
                 Register
               </Button>
+              {error && <p>{error}</p>}
             </form>
+            <Toaster
+              message="Successfully registered!" // Message to display in the toaster
+              open={toasterOpen}
+              onClose={handleToasterClose}
+            />
             <Grid container justifyContent="center">
               <Grid item>
                 <Link href="/login">Already have an account? Sign in</Link>

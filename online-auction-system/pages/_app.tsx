@@ -2,6 +2,8 @@ import * as React from "react";
 import type { AppProps } from "next/app";
 import { CacheProvider, EmotionCache } from "@emotion/react";
 import { ThemeProvider, CssBaseline, createTheme, Box } from "@mui/material";
+import { Provider } from "react-redux";
+import store from "../store/rootStore";
 
 import "@fontsource/poppins"; // Defaults to weight 400
 import "@fontsource/poppins/400.css"; // Specify weight
@@ -25,7 +27,9 @@ const MyApp: React.FunctionComponent<MyAppProps> = (props) => {
     <CacheProvider value={emotionCache}>
       <ThemeProvider theme={lightTheme}>
         <CssBaseline />
-        <Component {...pageProps} />
+        <Provider store={store}>
+          <Component {...pageProps} />
+        </Provider>
       </ThemeProvider>
     </CacheProvider>
   );

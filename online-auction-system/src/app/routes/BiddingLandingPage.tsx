@@ -22,16 +22,16 @@ export const BiddingLandingPage: React.FC = () => {
           items.
         </Typography>
       </section>
-      <Grid item>
+      <Grid item xs={12}>
         <Link href="/register">
-          <Button variant="contained" color="primary" size="medium">
+          <Button variant="contained" color="primary" size="medium" fullWidth>
             Register
           </Button>
         </Link>
       </Grid>
-      <Grid item>
+      <Grid item xs={12}>
         <Link href="/login">
-          <Button variant="contained" color="primary" size="medium">
+          <Button variant="contained" color="primary" size="medium" fullWidth>
             Login
           </Button>
         </Link>

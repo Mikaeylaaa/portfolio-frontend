@@ -15,6 +15,8 @@ import PublishIcon from '@mui/icons-material/Publish';
 import AttachMoney from "@mui/icons-material/AttachMoney";
 import { useRouter } from "next/router";
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import { publishItemRequest } from "../../../../../store";
 
 interface BiddingItemsTableProps {
   items: BiddingItem[];
@@ -23,9 +25,9 @@ interface BiddingItemsTableProps {
 const BiddingItemsDraftTable: React.FC<BiddingItemsTableProps> = ({
   items,
 }) => {
-  const isTablet = useMediaQuery("(max-width: 1024px)");
   const isMobile = useMediaQuery("(max-width: 600px)");
   const router = useRouter();
+  const dispatch = useDispatch();
 
   const routeToEditBidItemPage = async (editMode: boolean) => {
     await router.push('/bidding/bidding-item-form');
@@ -33,17 +35,10 @@ const BiddingItemsDraftTable: React.FC<BiddingItemsTableProps> = ({
 
   const handlePublishItem = async (itemId: number) => {
     try {
-      // Make an API call to update the bidding item's state to 'published'
-      
-      await axios.post(`/bidding-items/${itemId}/publish`);
-
-      // Optionally, you can update the state of the bidding item in the frontend to show that it has been published
-      // For example, you could remove the item from the draft table or mark it as published.
-
-      // After successful publish, you can perform any necessary UI updates or display a success message.
-      console.log("Item published successfully!");
+      dispatch(publishItemRequest(itemId));
+      console.log("Item publish request dispatched successfully!");
     } catch (error) {
-      console.error("Error publishing item:", error);
+      console.error("Error dispatching publish item request:", error);
     }
   };
 
@@ -84,7 +79,7 @@ const BiddingItemsDraftTable: React.FC<BiddingItemsTableProps> = ({
                     <ItemDeleteButton itemId={item.id} />
                   </Box>
                   <Box sx={{ ml: 1, cursor: 'pointer' }}>
-                    <PublishIcon fontSize="small" color="success"/>
+                    <PublishIcon fontSize="small" color="success" onClick={() => handlePublishItem(item.id)}/>
                   </Box>
                 </Box>
               </TableCell>

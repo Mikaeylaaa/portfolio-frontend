@@ -39,7 +39,7 @@ const BiddingItemsTable: React.FC<BiddingItemsTableProps> = ({ items }) => {
               {!isMobile && <TableCell>${item.itemPrice}</TableCell>}
               {!isMobile && <TableCell>{`${item.timeWindowHours} hrs ${item.timeWindowMinutes} mins`}</TableCell>}
               <TableCell align="center">
-                <Button variant="contained" color="primary" startIcon={<AttachMoney fontSize="small" />}>
+                <Button variant="contained" color="primary" size="small" startIcon={<AttachMoney fontSize="small" />}>
                   Bid
                 </Button>
               </TableCell>

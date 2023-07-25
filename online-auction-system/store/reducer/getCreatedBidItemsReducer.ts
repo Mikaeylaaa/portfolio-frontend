@@ -1,5 +1,6 @@
 // src/redux/reducers.ts
 
+import { Reducer } from "redux";
 import {
   FETCH_BIDDING_ITEMS_FAILURE,
   FETCH_BIDDING_ITEMS_SUCCESS,
@@ -16,7 +17,7 @@ const initialState: CreatedBidItemState = {
   error: null,
 };
 
-const getCreatedBidItemsReducer = (state = initialState, action: any) => {
+const getCreatedBidItemsReducer: Reducer<CreatedBidItemState> = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_BIDDING_ITEMS_SUCCESS:
       return {

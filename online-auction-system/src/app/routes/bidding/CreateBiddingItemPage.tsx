@@ -43,34 +43,35 @@ const CreateBiddingItemPage: React.FC = () => {
     state: 'draft'
   };
 
-  useEffect(() => {
-    // Fetch the existing bidding items when the component mounts
-    const fetchExistingBiddingItems = async () => {
-      try {
-        // Assuming your API call to fetch bidding items returns an array of BiddingItem
-        const response = await fetch("/api/existing-items");
-        const data: BiddingItem[] = await response.json();
-        setExistingBiddingItems(data);
-      } catch (error) {
-        console.error("Error fetching existing bidding items:", error);
-      }
-    };
-    // If in Edit mode, fetch the existing item data based on the item ID from query parameters
-    if (editMode) {
-      const itemId = parseInt(router.query.itemId as string);
-      const existingItem = existingBiddingItems.find(
-        (item) => item.id === itemId
-      );
-      if (existingItem) {
-        setExistingBiddingItem(existingItem);
-      } else {
-        // Handle the case when the item with the specified ID is not found
-        console.error("Existing item not found.");
-      }
-    }
+  // useEffect(() => {
+  //   // Fetch the existing bidding items when the component mounts
+  //   const fetchExistingBiddingItems = async () => {
+  //     try {
+  //       // Assuming your API call to fetch bidding items returns an array of BiddingItem
+  //       const API_URL = process.env.API_BASE_URL;
+  //       const response = await fetch(`${API_URL}/existing-items`);
+  //       const data: BiddingItem[] = await response.json();
+  //       setExistingBiddingItems(data);
+  //     } catch (error) {
+  //       console.error("Error fetching existing bidding items:", error);
+  //     }
+  //   };
+  //   // If in Edit mode, fetch the existing item data based on the item ID from query parameters
+  //   if (editMode) {
+  //     const itemId = parseInt(router.query.itemId as string);
+  //     const existingItem = existingBiddingItems.find(
+  //       (item) => item.id === itemId
+  //     );
+  //     if (existingItem) {
+  //       setExistingBiddingItem(existingItem);
+  //     } else {
+  //       // Handle the case when the item with the specified ID is not found
+  //       console.error("Existing item not found.");
+  //     }
+  //   }
 
-    fetchExistingBiddingItems();
-  }, []);
+  //   fetchExistingBiddingItems();
+  // }, []);
 
   const handleSave = async (bidItem: BiddingItemFormValues) => {
     // Perform any additional validation or logic before saving the item
@@ -89,19 +90,19 @@ const CreateBiddingItemPage: React.FC = () => {
     }
 
     // Check if the new item already exists in the list of existing items
-    const itemExists = existingBiddingItems.some(
-      (item) =>
-        item.itemName === bidItem.itemName &&
-        item.itemPrice === bidItem.itemPrice &&
-        item.timeWindowHours === bidItem.timeWindowHours &&
-        item.timeWindowMinutes === bidItem.timeWindowMinutes
-    );
+    // const itemExists = existingBiddingItems.some(
+    //   (item) =>
+    //     item.itemName === bidItem.itemName &&
+    //     item.itemPrice === bidItem.itemPrice &&
+    //     item.timeWindowHours === bidItem.timeWindowHours &&
+    //     item.timeWindowMinutes === bidItem.timeWindowMinutes
+    // );
 
-    if (itemExists) {
-      // Display an error message or handle the duplication case here
-      console.log("Item already exists.");
-      return;
-    }
+    // if (itemExists) {
+    //   // Display an error message or handle the duplication case here
+    //   console.log("Item already exists.");
+    //   return;
+    // }
 
     if (editMode && existingBiddingItem) {
       // Handle the Edit functionality here

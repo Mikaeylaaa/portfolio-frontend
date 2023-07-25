@@ -1,25 +1,41 @@
 import BiddingItemsTable from "@/app/common/components/BiddingItemsTable/BiddingItemsTable";
 import Header from "@/app/common/components/Header";
-import { Box, Button, Grid, Typography } from "@mui/material";
-import Link from "next/link";
-import React, { useEffect, useState } from "react";
-import { BiddingItem } from "./types";
+import { Box, Button, Grid } from "@mui/material";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState, fetchBiddingItems } from "../../../../store";
 import BiddingItemsDraftTable from "@/app/common/components/BiddingItemsTable/BiddingItemsDraftTable";
+import { fetchPublishedItemsRequest } from "../../../../store/actions/fetchPublishedItemAction";
 
 export const BiddingHomePage: React.FC = () => {
   const [showInPublishBiddingPage, setShowInPublishBiddingPage] =
     useState(false);
-    const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const createdBidItems = useSelector(
     (state: RootState) => state.createdBidItemsState.biddingItems
   );
+  const publishedItems = (useSelector(
+    (state: RootState) => state.fetchPublishedItemsState.publishedItems
+  )) || createdBidItems.filter((item) => item.state === "published");
+  ;
 
+  console.log('createdBidItems',createdBidItems);
+  console.log('publishedItems',publishedItems);
   useEffect(() => {
     // Fetch bidding items when the component mounts
     dispatch(fetchBiddingItems());
   }, [dispatch]);
+
+  const handleToggleTable = () => {
+    setShowInPublishBiddingPage(!showInPublishBiddingPage);
+  };
+
+  useEffect(() => {
+    // Fetch 'published' items when showInPublishBiddingPage is true
+    if (showInPublishBiddingPage) {
+      dispatch(fetchPublishedItemsRequest());
+    }
+  }, [showInPublishBiddingPage, dispatch]);
 
   return (
     <Grid container>
@@ -32,14 +48,24 @@ export const BiddingHomePage: React.FC = () => {
           <Grid container sx={{ ml: 3 }}>
             <Grid item xs={12} sm={1}>
               <Box sx={{ mt: 3 }}>
-                <Button color="primary" size="medium" variant="outlined">
+                <Button
+                  color="primary"
+                  size="medium"
+                  variant="outlined"
+                  onClick={handleToggleTable}
+                >
                   Ongoing
                 </Button>
               </Box>
             </Grid>
             <Grid item xs={12} sm={1}>
               <Box sx={{ mt: 3 }}>
-                <Button color="primary" size="medium" variant="outlined">
+                <Button
+                  color="primary"
+                  size="medium"
+                  variant="outlined"
+                  onClick={handleToggleTable}
+                >
                   Completed
                 </Button>
               </Box>
@@ -50,10 +76,10 @@ export const BiddingHomePage: React.FC = () => {
 
       <Grid item xs={12} sx={{ ml: 3, mr: 3 }}>
         <Box sx={{ mt: 2 }}>
-          {!showInPublishBiddingPage ? (
-            <BiddingItemsDraftTable items={createdBidItems} />
+          {showInPublishBiddingPage ? (
+            <BiddingItemsTable items={publishedItems} />
           ) : (
-            <BiddingItemsTable items={[]} />
+            <BiddingItemsDraftTable items={createdBidItems} />
           )}
         </Box>
       </Grid>

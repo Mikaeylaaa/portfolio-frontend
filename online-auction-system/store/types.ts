@@ -24,6 +24,8 @@ export interface RootState {
   existingBidItemsState: ExistingBidItemState;
   deleteItemsState: DeleteItemsState;
   updateItemsState: UpdateItemsState;
+  publishItemsState: PublishItemsState;
+  fetchPublishedItemsState: FetchPublishedItemState;
 }
 export interface LoginAuthState {
   user: User | null;
@@ -60,6 +62,17 @@ export interface DeleteItemsState {
 }
 
 export interface UpdateItemsState {
+  loading: boolean;
+  error: string | null;
+}
+
+export interface PublishItemsState {
+  loading: boolean;
+  error: string | null;
+}
+
+export interface FetchPublishedItemState {
+  publishedItems: BiddingItem[];
   loading: boolean;
   error: string | null;
 }

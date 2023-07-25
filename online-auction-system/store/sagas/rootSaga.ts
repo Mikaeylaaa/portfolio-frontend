@@ -7,16 +7,19 @@ import { getCreatedBidItemSaga } from "./getCreatedBidItemSaga";
 import { watchFetchExistingItems } from "./fetchExistingItemsSaga";
 import { watchDeleteItem } from "./deleteItemsSaga";
 import { updateBiddingItemSaga } from "./updateItemSaga";
+import { publishBiddingItemSaga } from "./publishItemSaga";
+import { watchFetchPublishedItems } from "./fetchPublishItemSaga";
 
 export default function* rootSaga() {
   yield all([
-    // Add other sagas if you have them
     watchLogin(),
     watchLogout(),
     biddingItemSaga(),
     getCreatedBidItemSaga(),
     watchFetchExistingItems(),
     watchDeleteItem(),
-    updateBiddingItemSaga()
+    updateBiddingItemSaga(),
+    publishBiddingItemSaga(),
+    watchFetchPublishedItems()
   ]);
 }

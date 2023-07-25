@@ -15,6 +15,8 @@ import { biddingItemSaga } from "./sagas/biddingItemSaga";
 import fetchExistingItemsReducer from "./reducer/fetchExistingItemsReducer";
 import deleteItemReducer from "./reducer/deleteItemReducer";
 import updateItemReducer from "./reducer/updateItemReducer";
+import publishBiddingItemReducer from "./reducer/publishBiddingItemReducer";
+import fetchPublishItemReducer from "./reducer/fetchPublishItemReducer";
 
 const rootReducer = combineReducers({
   loginAuth: loginAuthReducer,
@@ -24,7 +26,9 @@ const rootReducer = combineReducers({
   createdBidItemsState: getCreatedBidItemsReducer,
   existingBidItemsState: fetchExistingItemsReducer,
   deleteItemsState: deleteItemReducer,
-  updateItemsState: updateItemReducer
+  updateItemsState: updateItemReducer,
+  publishItemsState: publishBiddingItemReducer,
+  fetchPublishedItemsState: fetchPublishItemReducer
 });
 
 const sagaMiddleware = createSagaMiddleware();

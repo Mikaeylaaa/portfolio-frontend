@@ -1,14 +1,17 @@
 // store/authReducer.ts
 import { Reducer } from "redux";
-import { AuthState, LoginAuthActionTypes } from "../types";
+import { LoginAuthActionTypes, LoginAuthState } from "../types";
 
-const initialState: AuthState = {
+const initialLoginAuthState: LoginAuthState = {
   user: null,
   loading: false,
   error: null,
 };
 
-const loginAuthReducer: Reducer<AuthState> = (state = initialState, action) => {
+const loginAuthReducer: Reducer<LoginAuthState> = (
+  state = initialLoginAuthState,
+  action
+) => {
   switch (action.type) {
     case LoginAuthActionTypes.LOGIN_REQUEST:
       return { ...state, loading: true, error: null };

@@ -1,14 +1,14 @@
 // store/authReducer.ts
 import { Reducer } from "redux";
-import { RegisterAuthActionTypes, AuthState } from "../types";
+import { RegisterAuthActionTypes, RegisterAuthState } from "../types";
 
-const initialState: AuthState = {
+const initialRegisterAuthState: RegisterAuthState = {
   user: null,
   loading: false,
   error: null,
 };
 
-const authReducer: Reducer<AuthState> = (state = initialState, action) => {
+const registerAuthReducer: Reducer<RegisterAuthState> = (state = initialRegisterAuthState, action) => {
   switch (action.type) {
     case RegisterAuthActionTypes.REGISTER_REQUEST:
       return { ...state, loading: true, error: null };
@@ -21,4 +21,4 @@ const authReducer: Reducer<AuthState> = (state = initialState, action) => {
   }
 };
 
-export default authReducer;
+export default registerAuthReducer;

@@ -15,7 +15,7 @@ const Alert = React.forwardRef<HTMLDivElement, AlertProps>((props, ref) => {
 
 const Toaster: React.FC<ToasterProps> = ({ message, open, onClose }) => {
   return (
-    <Snackbar open={open} autoHideDuration={3000} onClose={onClose}>
+    <Snackbar open={open} autoHideDuration={3000} onClose={onClose} anchorOrigin={{ vertical: 'top', horizontal: 'center' }}>
       <Alert onClose={onClose} severity="success">
         {message}
       </Alert>

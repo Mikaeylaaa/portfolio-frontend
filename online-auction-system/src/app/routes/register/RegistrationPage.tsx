@@ -13,8 +13,8 @@ const RegistrationPage: React.FC = () => {
   const [toasterOpen, setToasterOpen] = useState(false);
 
   const dispatch = useDispatch();
-  const loading = useSelector((state: RootState) => state.auth.loading);
-  const error = useSelector((state: RootState) => state.auth.error);
+  const loading = useSelector((state: RootState) => state.registerAuth.loading);
+  const error = useSelector((state: RootState) => state.registerAuth.error);
 
   const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(event.target.value);

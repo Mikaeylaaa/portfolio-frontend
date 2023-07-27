@@ -1,1 +1,1 @@
-export * from './BiddingItemForm';
+export * from "./BiddingItemForm";

@@ -6,7 +6,7 @@ export const UPDATE_BIDDING_ITEM_FAILURE = "UPDATE_BIDDING_ITEM_FAILURE";
 
 export const updateBiddingItemRequest = (
   itemId: number,
-  newItemData: BiddingItem
+  newItemData: BiddingItem,
 ) => ({
   type: UPDATE_BIDDING_ITEM_REQUEST,
   payload: { itemId, newItemData },

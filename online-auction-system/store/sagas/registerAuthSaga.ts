@@ -1,12 +1,18 @@
 // store/authSaga.ts
-import { takeLatest, put } from 'redux-saga/effects';
-import { RegisterAuthActionTypes, User } from '../types';
-import { registerSuccess, registerFailure } from '../actions/registerAuthActions';
-import axios from 'axios';
+import { takeLatest, put } from "redux-saga/effects";
+import { RegisterAuthActionTypes, User } from "../types";
+import {
+  registerSuccess,
+  registerFailure,
+} from "../actions/registerAuthActions";
+import axios from "axios";
 
-function* registerUser(action: { type: RegisterAuthActionTypes; payload: User }) {
+function* registerUser(action: {
+  type: RegisterAuthActionTypes;
+  payload: User;
+}) {
   const apiUrl = process.env.API_BASE_URL;
-  const debugMode = process.env.DEBUG === 'true'; // Ensure boolean value for DEBUG
+  const debugMode = process.env.DEBUG === "true"; // Ensure boolean value for DEBUG
 
   try {
     yield axios.post(`${apiUrl}/register`, action.payload);

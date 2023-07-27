@@ -6,10 +6,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../../store/types";
 import { registerRequest } from "../../../../store/actions/registerAuthActions";
 import Toaster from "@/app/common/components/Toaster";
+import HowToRegIcon from "@mui/icons-material/HowToReg";
 
 const RegistrationPage: React.FC = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [emailError, setEmailError] = useState("");
+  const [passwordError, setPasswordError] = useState("");
   const [toasterOpen, setToasterOpen] = useState(false);
 
   const dispatch = useDispatch();
@@ -30,6 +33,22 @@ const RegistrationPage: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    // Reset previous error messages
+    setEmailError("");
+    setPasswordError("");
+
+    // Perform basic input validation
+    if (!email || !password) {
+      if (!email) setEmailError("Email is required.");
+      if (!password) setPasswordError("Password is required.");
+      // Dispatch an action to set the error message in the Redux store
+      dispatch({
+        type: "REGISTRATION_ERROR",
+        payload: "Please fill in all fields.",
+      });
+      return;
+    }
+
     dispatch(registerRequest({ email, password }));
     setToasterOpen(true); // Show the toaster on successful registration
     setEmail(""); // Clear the text fields after successful registration
@@ -65,11 +84,12 @@ const RegistrationPage: React.FC = () => {
                   <TextField
                     label="Email"
                     autoFocus
-                    required
                     variant="outlined"
                     fullWidth
                     value={email}
                     onChange={handleEmailChange}
+                    error={Boolean(emailError)} // Add this to show error styling
+                    helperText={emailError} // Add this to display error message
                   />
                 </Grid>
                 <Grid item xs={12}>
@@ -80,6 +100,8 @@ const RegistrationPage: React.FC = () => {
                     type="password"
                     value={password}
                     onChange={handlePasswordChange}
+                    error={Boolean(passwordError)} // Add this to show error styling
+                    helperText={passwordError} // Add this to display error message
                   />
                 </Grid>
               </Grid>
@@ -89,6 +111,7 @@ const RegistrationPage: React.FC = () => {
                 variant="contained"
                 color="primary"
                 sx={{ mt: 3, mb: 2 }}
+                startIcon={<HowToRegIcon fontSize="small" />}
               >
                 Register
               </Button>

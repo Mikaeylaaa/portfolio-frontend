@@ -1,10 +1,7 @@
-
 import { BiddingLandingPage } from "@/app/routes";
 import { NextPage } from "next";
 
 const HomeNextPage: NextPage = () => {
-    return (
-        <BiddingLandingPage />
-    );
-}
+  return <BiddingLandingPage />;
+};
 export default HomeNextPage;

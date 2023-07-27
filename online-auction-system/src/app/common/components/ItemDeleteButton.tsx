@@ -17,7 +17,7 @@ const ItemDeleteButton: React.FC<ItemDeleteButtonProps> = ({ itemId }) => {
   const [confirmationDialogOpen, setConfirmationDialogOpen] = useState(false);
   const [toasterOpen, setToasterOpen] = useState(false);
   const loading = useSelector(
-    (state: RootState) => state.deleteItemsState.loading
+    (state: RootState) => state.deleteItemsState.loading,
   );
   const error = useSelector((state: RootState) => state.deleteItemsState.error);
   const router = useRouter();
@@ -46,8 +46,8 @@ const ItemDeleteButton: React.FC<ItemDeleteButtonProps> = ({ itemId }) => {
 
   return (
     <Box>
-        <DeleteIcon fontSize="small" onClick={handleDeleteItem} color="error"/>
-        <Typography>{loading ? "Deleting..." : ""}</Typography>
+      <DeleteIcon fontSize="small" onClick={handleDeleteItem} color="error" />
+      <Typography>{loading ? "Deleting..." : ""}</Typography>
       {/* <Button
         onClick={handleDeleteItem}
         disabled={loading}

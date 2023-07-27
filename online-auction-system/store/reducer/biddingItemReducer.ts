@@ -15,18 +15,18 @@ const initialAddBiddingItemState: BiddingItemState = {
 
 const biddingItemReducer: Reducer<BiddingItemState> = (
   state = initialAddBiddingItemState,
-  action
+  action,
 ) => {
   switch (action.type) {
     case ADD_BIDDING_ITEM:
-        console.log('add bid item 1');
+      console.log("add bid item 1");
       return {
         ...state,
         loading: true,
         error: null,
       };
     case ADD_BIDDING_ITEM_SUCCESS:
-        console.log('add bid item 2');
+      console.log("add bid item 2");
       // Handle the success action and update the state with the newly created item
       return {
         ...state,
@@ -34,7 +34,7 @@ const biddingItemReducer: Reducer<BiddingItemState> = (
         error: null,
       };
     case ADD_BIDDING_ITEM_FAILURE:
-        console.log('add bid item 3');
+      console.log("add bid item 3");
       // Handle the failure action and return the current state without any changes
       return { ...state, loading: false, error: action.payload };
     default:

@@ -1,1 +1,1 @@
-export * from './formatTimeWindow';
+export * from "./formatDuration";

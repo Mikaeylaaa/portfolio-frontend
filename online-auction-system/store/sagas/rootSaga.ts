@@ -9,6 +9,8 @@ import { watchDeleteItem } from "./deleteItemsSaga";
 import { updateBiddingItemSaga } from "./updateItemSaga";
 import { publishBiddingItemSaga } from "./publishItemSaga";
 import { watchFetchPublishedItems } from "./fetchPublishItemSaga";
+import { watchCreateDeposit, watchFetchUsers } from "./depositSaga";
+import { watchFetchUser } from "./fetchUsersSaga";
 
 export default function* rootSaga() {
   yield all([
@@ -20,6 +22,9 @@ export default function* rootSaga() {
     watchDeleteItem(),
     updateBiddingItemSaga(),
     publishBiddingItemSaga(),
-    watchFetchPublishedItems()
+    watchFetchPublishedItems(),
+    watchFetchUsers(),
+    watchCreateDeposit(),
+    watchFetchUser(),
   ]);
 }

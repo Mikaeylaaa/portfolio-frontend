@@ -1,6 +1,6 @@
-import { User, RegisterAuthActionTypes } from "../types";
+import { RegisterAuthActionTypes } from "../types";
 
-export const registerRequest = (user: User) => ({
+export const registerRequest = (user: { email: string; password: string }) => ({
   type: RegisterAuthActionTypes.REGISTER_REQUEST,
   payload: user,
 });

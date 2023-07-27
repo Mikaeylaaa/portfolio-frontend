@@ -1,21 +1,20 @@
-// pages/Register.tsx
 import React, { useState } from "react";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
-import axios from "axios";
 import { Box, Checkbox, FormControlLabel, Typography } from "@mui/material";
 import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState, loginRequest } from "../../../../store";
 import { useRouter } from "next/router";
+import LoginIcon from "@mui/icons-material/Login";
 
 const LoginPage: React.FC = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
-  const [emailError, setEmailError] = useState('');
-  const [passwordError, setPasswordError] = useState('');
+  const [emailError, setEmailError] = useState("");
+  const [passwordError, setPasswordError] = useState("");
   const router = useRouter();
 
   const dispatch = useDispatch();
@@ -33,15 +32,15 @@ const LoginPage: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     // Reset previous error messages
-    setEmailError('');
-    setPasswordError('');
+    setEmailError("");
+    setPasswordError("");
     // Perform basic input validation
     if (!email || !password) {
-        if (!email) setEmailError('Email is required.');
-        if (!password) setPasswordError('Password is required.');
-        // Dispatch an action to set the error message in the Redux store
-        dispatch({ type: 'LOGIN_ERROR', payload: 'Please fill in all fields.' });
-        return;
+      if (!email) setEmailError("Email is required.");
+      if (!password) setPasswordError("Password is required.");
+      // Dispatch an action to set the error message in the Redux store
+      dispatch({ type: "LOGIN_ERROR", payload: "Please fill in all fields." });
+      return;
     }
     // Dispatch the login request action to trigger the login saga
     dispatch(loginRequest({ email, password }));
@@ -73,7 +72,7 @@ const LoginPage: React.FC = () => {
           <Box sx={{ mt: 1 }}>
             <form onSubmit={handleSubmit}>
               <Grid container spacing={2}>
-              {error && <p>{error}</p>}
+                {error && <p>{error}</p>}
                 <Grid item xs={12}>
                   <TextField
                     label="Email"
@@ -102,7 +101,14 @@ const LoginPage: React.FC = () => {
                 </Grid>
                 <Grid item xs={12}>
                   <FormControlLabel
-                    control={<Checkbox value="remember" checked={rememberMe} onChange={() => setRememberMe(!rememberMe)} color="primary" />}
+                    control={
+                      <Checkbox
+                        value="remember"
+                        checked={rememberMe}
+                        onChange={() => setRememberMe(!rememberMe)}
+                        color="primary"
+                      />
+                    }
                     label="Remember me"
                   />
                 </Grid>
@@ -113,6 +119,7 @@ const LoginPage: React.FC = () => {
                 variant="contained"
                 color="primary"
                 sx={{ mt: 3, mb: 2 }}
+                startIcon={<LoginIcon fontSize="small" />}
               >
                 Log In
               </Button>

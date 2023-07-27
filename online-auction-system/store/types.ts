@@ -4,13 +4,22 @@ export interface User {
   password: string;
 }
 
+export interface UserInfo {
+  id: number;
+  email: string;
+}
+
 export interface BiddingItem {
   id: number;
   itemName: string;
   itemPrice: number;
   timeWindowHours: number;
   timeWindowMinutes: number;
-  state: 'draft' | 'published'
+  state: "draft" | "published";
+}
+
+export interface DepositMoneyForm {
+  amount: number;
 }
 
 export interface RootState {
@@ -26,6 +35,8 @@ export interface RootState {
   updateItemsState: UpdateItemsState;
   publishItemsState: PublishItemsState;
   fetchPublishedItemsState: FetchPublishedItemState;
+  depositsState: DepositState;
+  usersState: UserInfoState;
 }
 export interface LoginAuthState {
   user: User | null;
@@ -73,6 +84,18 @@ export interface PublishItemsState {
 
 export interface FetchPublishedItemState {
   publishedItems: BiddingItem[];
+  loading: boolean;
+  error: string | null;
+}
+
+export interface DepositState {
+  users: UserInfo[];
+  loading: boolean;
+  error: string | null;
+}
+
+export interface UserInfoState {
+  user: UserInfo;
   loading: boolean;
   error: string | null;
 }

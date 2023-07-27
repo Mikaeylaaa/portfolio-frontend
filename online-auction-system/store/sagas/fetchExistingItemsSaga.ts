@@ -12,13 +12,16 @@ const getExistingItems = async (
   itemName: string,
   itemPrice: number,
   timeWindowHours: number,
-  timeWindowMinutes: number
+  timeWindowMinutes: number,
 ) => {
   try {
     const API_URL = process.env.API_BASE_URL; // Replace with your API base URL
-    const response = await axios.get<BiddingItem[]>(`${API_URL}/existing-items`, {
-      params: { itemName, itemPrice, timeWindowHours, timeWindowMinutes },
-    });
+    const response = await axios.get<BiddingItem[]>(
+      `${API_URL}/existing-items`,
+      {
+        params: { itemName, itemPrice, timeWindowHours, timeWindowMinutes },
+      },
+    );
     return response.data;
   } catch (error) {
     throw new Error("Failed to fetch existing bid items.");
@@ -34,7 +37,7 @@ function* fetchExistingItemsSaga(action: any) {
       itemName,
       itemPrice,
       timeWindowHours,
-      timeWindowMinutes
+      timeWindowMinutes,
     );
 
     // Dispatch success action with the fetched data

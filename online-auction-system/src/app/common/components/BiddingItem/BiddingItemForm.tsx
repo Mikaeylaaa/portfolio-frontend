@@ -1,7 +1,18 @@
 import React from "react";
 import { useFormik } from "formik";
-import * as yup from "yup"; // For form validation
-import { TextField, Button, Box, Grid, FormControl, InputLabel, Select, MenuItem } from "@mui/material";
+import * as yup from "yup";
+import {
+  TextField,
+  Button,
+  Box,
+  Grid,
+  FormControl,
+  InputLabel,
+  Select,
+  MenuItem,
+} from "@mui/material";
+import AddIcon from "@mui/icons-material/Add";
+import CloseIcon from "@mui/icons-material/Close";
 
 export interface BiddingItemFormValues {
   itemName: string;
@@ -15,7 +26,6 @@ interface BiddingItemFormProps {
   initialValues: BiddingItemFormValues;
   onSubmit: (values: BiddingItemFormValues) => void;
   onCancel: () => void;
-  editMode: boolean;
 }
 
 const validationSchema = yup.object({
@@ -77,7 +87,6 @@ const BiddingItemForm: React.FC<BiddingItemFormProps> = ({
             name="itemPrice"
             label="Starting Price"
             fullWidth
-            autoFocus
             type="number"
             value={formik.values.itemPrice}
             onChange={formik.handleChange}
@@ -93,7 +102,6 @@ const BiddingItemForm: React.FC<BiddingItemFormProps> = ({
             name="timeWindowHours"
             type="number"
             fullWidth
-            autoFocus
             value={formik.values.timeWindowHours}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
@@ -112,7 +120,6 @@ const BiddingItemForm: React.FC<BiddingItemFormProps> = ({
             label="Time Window (Minutes)"
             name="timeWindowMinutes"
             type="number"
-            autoFocus
             fullWidth
             value={formik.values.timeWindowMinutes}
             onChange={formik.handleChange}
@@ -137,7 +144,7 @@ const BiddingItemForm: React.FC<BiddingItemFormProps> = ({
               value={formik.values.state}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
-              disabled // Make the Select dropdown read-only
+              disabled
             >
               <MenuItem value="draft">Draft</MenuItem>
             </Select>
@@ -146,12 +153,22 @@ const BiddingItemForm: React.FC<BiddingItemFormProps> = ({
       </Grid>
       <Grid container justifyContent="center" sx={{ mt: 3 }} spacing={2}>
         <Grid item>
-          <Button onClick={onCancel} color="primary" variant="contained">
+          <Button
+            onClick={onCancel}
+            color="primary"
+            variant="contained"
+            startIcon={<CloseIcon fontSize="small" />}
+          >
             Cancel
           </Button>
         </Grid>
         <Grid item>
-          <Button type="submit" variant="contained" color="primary">
+          <Button
+            type="submit"
+            variant="contained"
+            color="primary"
+            startIcon={<AddIcon fontSize="small" />}
+          >
             Create
           </Button>
         </Grid>

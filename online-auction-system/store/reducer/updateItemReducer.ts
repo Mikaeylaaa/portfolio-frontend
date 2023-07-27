@@ -16,7 +16,7 @@ const initialState: UpdateItemsState = {
 
 const updateItemReducer = (
   state: UpdateItemsState = initialState,
-  action: any
+  action: any,
 ): UpdateItemsState => {
   switch (action.type) {
     case UPDATE_BIDDING_ITEM_REQUEST:

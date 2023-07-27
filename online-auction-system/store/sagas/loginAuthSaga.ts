@@ -5,8 +5,8 @@ import axios, { AxiosResponse } from "axios";
 
 // Define the type for the response from the login API
 interface LoginResponse {
-    success: boolean;
-    // Add other properties in the response as needed
+  success: boolean;
+  // Add other properties in the response as needed
 }
 
 function* loginUser(action: { type: LoginAuthActionTypes; payload: User }) {
@@ -16,12 +16,15 @@ function* loginUser(action: { type: LoginAuthActionTypes; payload: User }) {
   try {
     // Make the GET request to your backend login API endpoint
     const { email, password } = action.payload;
-    const response: AxiosResponse<LoginResponse> = yield axios.get(`${apiUrl}/login`, {
-      params: {
-        email,
-        password,
+    const response: AxiosResponse<LoginResponse> = yield axios.get(
+      `${apiUrl}/login`,
+      {
+        params: {
+          email,
+          password,
+        },
       },
-    });
+    );
     if (response.data.success) {
       // Dispatch a success action if login is successful
       yield put(loginSuccess());

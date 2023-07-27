@@ -17,6 +17,8 @@ import deleteItemReducer from "./reducer/deleteItemReducer";
 import updateItemReducer from "./reducer/updateItemReducer";
 import publishBiddingItemReducer from "./reducer/publishBiddingItemReducer";
 import fetchPublishItemReducer from "./reducer/fetchPublishItemReducer";
+import depositReducer from "./reducer/depositReducer";
+import fetchUserReducer from "./reducer/fetchUserReducer";
 
 const rootReducer = combineReducers({
   loginAuth: loginAuthReducer,
@@ -28,7 +30,9 @@ const rootReducer = combineReducers({
   deleteItemsState: deleteItemReducer,
   updateItemsState: updateItemReducer,
   publishItemsState: publishBiddingItemReducer,
-  fetchPublishedItemsState: fetchPublishItemReducer
+  fetchPublishedItemsState: fetchPublishItemReducer,
+  depositsState: depositReducer,
+  usersState: fetchUserReducer,
 });
 
 const sagaMiddleware = createSagaMiddleware();
@@ -36,7 +40,7 @@ const sagaMiddleware = createSagaMiddleware();
 const store = configureStore({
   reducer: rootReducer,
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(sagaMiddleware)
+    getDefaultMiddleware().concat(sagaMiddleware),
 });
 
 sagaMiddleware.run(registerAuthSaga);

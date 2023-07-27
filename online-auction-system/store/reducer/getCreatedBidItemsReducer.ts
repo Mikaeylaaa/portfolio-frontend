@@ -17,7 +17,10 @@ const initialState: CreatedBidItemState = {
   error: null,
 };
 
-const getCreatedBidItemsReducer: Reducer<CreatedBidItemState> = (state = initialState, action) => {
+const getCreatedBidItemsReducer: Reducer<CreatedBidItemState> = (
+  state = initialState,
+  action,
+) => {
   switch (action.type) {
     case FETCH_BIDDING_ITEMS_SUCCESS:
       return {

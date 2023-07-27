@@ -12,7 +12,7 @@ function* fetchPublishedItemsSaga() {
   try {
     const response: AxiosResponse = yield call(
       axios.get,
-      `${API_URL}/published-items`
+      `${API_URL}/published-items`,
     );
     yield put(fetchPublishedItemsSuccess(response.data));
   } catch (error: any) {

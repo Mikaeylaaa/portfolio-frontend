@@ -1,6 +1,6 @@
-import { LoginAuthActionTypes, User } from "../types";
+import { LoginAuthActionTypes } from "../types";
 
-export const loginRequest = (user: User) => ({
+export const loginRequest = (user: { email: string; password: string }) => ({
   type: LoginAuthActionTypes.LOGIN_REQUEST,
   payload: user,
 });

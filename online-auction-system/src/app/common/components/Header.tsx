@@ -13,8 +13,8 @@ import { RootState, logoutRequest } from "../../../../store";
 import PersonIcon from "@mui/icons-material/Person";
 import PostAddIcon from "@mui/icons-material/PostAdd";
 import SavingsIcon from "@mui/icons-material/Savings";
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import ExpandLessIcon from '@mui/icons-material/ExpandLess';
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import { Box, Popover } from "@mui/material";
 import { Logout } from "@mui/icons-material";
 
@@ -23,7 +23,7 @@ const Header: React.FC = () => {
   const dispatch = useDispatch();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const isAuthenticated = useSelector(
-    (state: RootState) => state.logoutAuth.isAuthenticated
+    (state: RootState) => state.logoutAuth.isAuthenticated,
   );
 
   const router = useRouter();
@@ -45,15 +45,15 @@ const Header: React.FC = () => {
     router.push(`/home`);
   };
 
-  //   const routerToCreateDeposoitPage = async () => {
-  //     await router.push(`/create-deposit`);
-  //   }
+  const routerToCreateDepositPage = async () => {
+    await router.push(`/deposit`);
+  };
 
   const balanceAmount = `100`; // Replace this with the actual balance amount fetched from the backend or state
 
   const routeToCreateBiddingItemPage = async () => {
-    await router.push('/bidding/bidding-item-form');
-  }
+    await router.push("/bidding/bidding-item-form");
+  };
 
   return (
     <AppBar position="static">
@@ -72,10 +72,14 @@ const Header: React.FC = () => {
           aria-haspopup="true"
           onClick={handleMenuOpen}
           color="inherit"
-          aria-expanded={open ? 'true' : undefined}
+          aria-expanded={open ? "true" : undefined}
         >
           <PersonIcon />
-          {open ? <ExpandLessIcon fontSize="small" /> : <ExpandMoreIcon fontSize="small" />}
+          {open ? (
+            <ExpandLessIcon fontSize="small" />
+          ) : (
+            <ExpandMoreIcon fontSize="small" />
+          )}
         </IconButton>
         <Popover
           id="account-menu"
@@ -86,25 +90,25 @@ const Header: React.FC = () => {
           sx={{
             elevation: 0,
             sx: {
-              overflow: 'visible',
-              filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
+              overflow: "visible",
+              filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
               mt: 1.5,
-              '& .MuiAvatar-root': {
+              "& .MuiAvatar-root": {
                 width: 32,
                 height: 32,
                 ml: -0.5,
                 mr: 1,
               },
-              '&:before': {
+              "&:before": {
                 content: '""',
-                display: 'block',
-                position: 'absolute',
+                display: "block",
+                position: "absolute",
                 top: 0,
                 right: 14,
                 width: 10,
                 height: 10,
-                bgcolor: 'background.paper',
-                transform: 'translateY(-50%) rotate(45deg)',
+                bgcolor: "background.paper",
+                transform: "translateY(-50%) rotate(45deg)",
                 zIndex: 0,
               },
             },
@@ -120,16 +124,22 @@ const Header: React.FC = () => {
         >
           <MenuItem onClick={routeToCreateBiddingItemPage}>
             <PostAddIcon fontSize="small" />
-            <Typography variant="body2" sx={{ ml: 1 }}>Create New Item</Typography>
+            <Typography variant="body2" sx={{ ml: 1 }}>
+              Create New Item
+            </Typography>
           </MenuItem>
-          <MenuItem onClick={() => `${console.log("deposit pop up")}`}>
+          <MenuItem onClick={routerToCreateDepositPage}>
             <SavingsIcon fontSize="small" />
-            <Typography variant="body2" sx={{ ml: 1 }}>Deposit</Typography>
+            <Typography variant="body2" sx={{ ml: 1 }}>
+              Deposit
+            </Typography>
           </MenuItem>
           {/* {isAuthenticated && <MenuItem onClick={handleLogout}>Logout</MenuItem>} */}
           <MenuItem onClick={handleLogout}>
             <Logout fontSize="small" />
-            <Typography variant="body2" sx={{ ml: 1 }}>Logout</Typography>
+            <Typography variant="body2" sx={{ ml: 1 }}>
+              Logout
+            </Typography>
           </MenuItem>
         </Popover>
       </Toolbar>

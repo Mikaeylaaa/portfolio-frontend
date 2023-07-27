@@ -6,12 +6,15 @@ import {
 } from "../actions";
 import { PublishItemsState } from "../types";
 
-const initialState: PublishItemsState= {
+const initialState: PublishItemsState = {
   loading: false,
   error: "",
 };
 
-const publishBiddingItemReducer: Reducer<PublishItemsState> = (state = initialState, action) => {
+const publishBiddingItemReducer: Reducer<PublishItemsState> = (
+  state = initialState,
+  action,
+) => {
   switch (action.type) {
     case PUBLISH_ITEM_REQUEST:
       return { ...state, loading: true, error: "" };

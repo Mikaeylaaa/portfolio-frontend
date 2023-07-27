@@ -1,1 +1,1 @@
-export * from './BiddingLandingPage';
+export * from "./BiddingLandingPage";

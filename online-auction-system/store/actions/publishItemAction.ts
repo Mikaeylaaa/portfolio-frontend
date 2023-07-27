@@ -6,7 +6,7 @@ export const PUBLISH_ITEM_FAILURE = "PUBLISH_ITEM_FAILURE";
 // Action Creators
 export const publishItemRequest = (itemId: number) => ({
   type: PUBLISH_ITEM_REQUEST,
-  payload: itemId
+  payload: itemId,
 });
 
 export const publishItemSuccess = () => ({

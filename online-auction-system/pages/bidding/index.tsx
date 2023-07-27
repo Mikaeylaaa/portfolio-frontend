@@ -1,11 +1,7 @@
-
-import { BiddingLandingPage } from "@/app/routes";
-import { BiddingHomePage } from "@/app/routes/bidding/BiddingHomePage";
+import { BiddingHomePublishedPage } from "@/app/routes/bidding/BiddingHomePublishedPage";
 import { NextPage } from "next";
 
 const BiddingHomeNextPage: NextPage = () => {
-    return (
-        <BiddingHomePage />
-    );
-}
+  return <BiddingHomePublishedPage />;
+};
 export default BiddingHomeNextPage;

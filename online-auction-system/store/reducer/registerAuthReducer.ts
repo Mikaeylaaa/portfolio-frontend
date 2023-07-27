@@ -8,7 +8,10 @@ const initialRegisterAuthState: RegisterAuthState = {
   error: null,
 };
 
-const registerAuthReducer: Reducer<RegisterAuthState> = (state = initialRegisterAuthState, action) => {
+const registerAuthReducer: Reducer<RegisterAuthState> = (
+  state = initialRegisterAuthState,
+  action,
+) => {
   switch (action.type) {
     case RegisterAuthActionTypes.REGISTER_REQUEST:
       return { ...state, loading: true, error: null };

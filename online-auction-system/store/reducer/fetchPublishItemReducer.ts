@@ -19,7 +19,7 @@ const initialState: FetchPublishedItemState = {
 
 const fetchPublishItemReducer: Reducer<FetchPublishedItemState> = (
   state = initialState,
-  action
+  action,
 ) => {
   switch (action.type) {
     case FETCH_PUBLISHED_ITEMS_REQUEST:

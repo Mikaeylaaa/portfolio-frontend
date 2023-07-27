@@ -1,10 +1,14 @@
 // src/redux/sagas.ts
 
-import { put, takeLatest, call } from 'redux-saga/effects';
+import { put, takeLatest, call } from "redux-saga/effects";
 
-import axios, { AxiosResponse } from 'axios';
-import { BiddingItem } from '../types';
-import { FETCH_BIDDING_ITEMS, fetchBiddingItemsFailure, fetchBiddingItemsSuccess } from '../actions';
+import axios, { AxiosResponse } from "axios";
+import { BiddingItem } from "../types";
+import {
+  FETCH_BIDDING_ITEMS,
+  fetchBiddingItemsFailure,
+  fetchBiddingItemsSuccess,
+} from "../actions";
 
 // Function to make the API request to fetch bidding items
 const fetchBiddingItemsAPI = () => {
@@ -22,8 +26,8 @@ function* fetchBiddingItemsAsync() {
     yield put(fetchBiddingItemsSuccess(response.data));
   } catch (error) {
     // Dispatch failure action with the error message
-    console.log('error', error);
-    yield put(fetchBiddingItemsFailure('Failed to fetch bidding items.'));
+    console.log("error", error);
+    yield put(fetchBiddingItemsFailure("Failed to fetch bidding items."));
   }
 }
 

@@ -1,11 +1,11 @@
 // src/redux/actions.ts
 
-import { BiddingItem } from '../types';
+import { BiddingItem } from "../types";
 
 // Action Types
-export const FETCH_BIDDING_ITEMS = 'FETCH_BIDDING_ITEMS';
-export const FETCH_BIDDING_ITEMS_SUCCESS = 'FETCH_BIDDING_ITEMS_SUCCESS';
-export const FETCH_BIDDING_ITEMS_FAILURE = 'FETCH_BIDDING_ITEMS_FAILURE';
+export const FETCH_BIDDING_ITEMS = "FETCH_BIDDING_ITEMS";
+export const FETCH_BIDDING_ITEMS_SUCCESS = "FETCH_BIDDING_ITEMS_SUCCESS";
+export const FETCH_BIDDING_ITEMS_FAILURE = "FETCH_BIDDING_ITEMS_FAILURE";
 
 // Action Creators
 export const fetchBiddingItems = () => ({

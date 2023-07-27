@@ -1,5 +1,9 @@
-import { Reducer } from 'redux';
-import { DELETE_ITEM_FAILURE, DELETE_ITEM_REQUEST, DELETE_ITEM_SUCCESS } from '../actions/deleteItemAction';
+import { Reducer } from "redux";
+import {
+  DELETE_ITEM_FAILURE,
+  DELETE_ITEM_REQUEST,
+  DELETE_ITEM_SUCCESS,
+} from "../actions/deleteItemAction";
 
 interface DeleteItemsState {
   loading: boolean;
@@ -11,7 +15,10 @@ const initialState: DeleteItemsState = {
   error: null,
 };
 
-const deleteItemReducer: Reducer<DeleteItemsState> = (state = initialState, action) => {
+const deleteItemReducer: Reducer<DeleteItemsState> = (
+  state = initialState,
+  action,
+) => {
   switch (action.type) {
     case DELETE_ITEM_REQUEST:
       return {

@@ -18,8 +18,8 @@ interface BiddingItemsTableProps {
 }
 
 const BiddingItemsTable: React.FC<BiddingItemsTableProps> = ({ items }) => {
-    const isTablet = useMediaQuery('(max-width: 1024px)');
-    const isMobile = useMediaQuery('(max-width: 600px)');
+  const isTablet = useMediaQuery("(max-width: 1024px)");
+  const isMobile = useMediaQuery("(max-width: 600px)");
 
   return (
     <TableContainer component={Paper}>
@@ -27,9 +27,15 @@ const BiddingItemsTable: React.FC<BiddingItemsTableProps> = ({ items }) => {
         <TableHead>
           <TableRow>
             <TableCell sx={{ fontWeight: 700 }}>Item Name</TableCell>
-            {!isMobile && <TableCell sx={{ fontWeight: 700 }}>Current Price</TableCell>}
-            {!isMobile && <TableCell sx={{ fontWeight: 700 }}>Duration</TableCell>}
-            <TableCell sx={{ fontWeight: 700 }} align="center">Bid</TableCell>
+            {!isMobile && (
+              <TableCell sx={{ fontWeight: 700 }}>Current Price</TableCell>
+            )}
+            {!isMobile && (
+              <TableCell sx={{ fontWeight: 700 }}>Duration</TableCell>
+            )}
+            <TableCell sx={{ fontWeight: 700 }} align="center">
+              Bid
+            </TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -37,9 +43,16 @@ const BiddingItemsTable: React.FC<BiddingItemsTableProps> = ({ items }) => {
             <TableRow key={item.id}>
               <TableCell>{item.itemName}</TableCell>
               {!isMobile && <TableCell>${item.itemPrice}</TableCell>}
-              {!isMobile && <TableCell>{`${item.timeWindowHours} hrs ${item.timeWindowMinutes} mins`}</TableCell>}
+              {!isMobile && (
+                <TableCell>{`${item.timeWindowHours} hrs ${item.timeWindowMinutes} mins`}</TableCell>
+              )}
               <TableCell align="center">
-                <Button variant="contained" color="primary" size="small" startIcon={<AttachMoney fontSize="small" />}>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  size="small"
+                  startIcon={<AttachMoney fontSize="small" />}
+                >
                   Bid
                 </Button>
               </TableCell>

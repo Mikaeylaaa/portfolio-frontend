@@ -1,13 +1,19 @@
 // sagas.ts
 
-import { call, put, takeLatest } from 'redux-saga/effects';
+import { call, put, takeLatest } from "redux-saga/effects";
 
+import axios from "axios";
+import { BiddingItem } from "../types";
+import {
+  UPDATE_BIDDING_ITEM_REQUEST,
+  updateBiddingItemFailure,
+  updateBiddingItemSuccess,
+} from "../actions/updateItemAction";
 
-import axios from 'axios';
-import { BiddingItem } from '../types';
-import { UPDATE_BIDDING_ITEM_REQUEST, updateBiddingItemFailure, updateBiddingItemSuccess } from '../actions/updateItemAction';
-
-const updateBiddingItemApi = async (itemId: number, newItemData: BiddingItem) => {
+const updateBiddingItemApi = async (
+  itemId: number,
+  newItemData: BiddingItem,
+) => {
   const API_URL = process.env.API_BASE_URL;
   const response = await axios.put(`${API_URL}/items/${itemId}`, newItemData);
   return response.data;

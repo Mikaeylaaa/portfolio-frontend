@@ -13,14 +13,14 @@ function* addBiddingItemAsync(action: {
   try {
     const response: AxiosResponse = yield axios.post(
       `${apiUrl}/items`,
-      action.payload
+      action.payload,
     );
-    console.log('response success ===== ', response.data);
+    console.log("response success ===== ", response.data);
     // Dispatch success action with the inserted item ID
     yield put(addBiddingItemSuccess(response.data));
   } catch (error) {
     // Dispatch failure action with the error message
-    console.log('response error ===== ', error);
+    console.log("response error ===== ", error);
     yield put(addBiddingItemFailure("Error adding bidding item."));
   }
 }

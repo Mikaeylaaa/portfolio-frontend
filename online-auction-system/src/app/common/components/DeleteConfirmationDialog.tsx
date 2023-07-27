@@ -1,4 +1,11 @@
-import { Dialog, DialogTitle, DialogContent, DialogActions, Button, Typography } from "@mui/material";
+import {
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+  Button,
+  Typography,
+} from "@mui/material";
 
 interface DeleteConfirmationDialogProps {
   open: boolean;
@@ -7,7 +14,12 @@ interface DeleteConfirmationDialogProps {
   loading: boolean;
 }
 
-const DeleteConfirmationDialog: React.FC<DeleteConfirmationDialogProps> = ({ open, onClose, onConfirm, loading }) => {
+const DeleteConfirmationDialog: React.FC<DeleteConfirmationDialogProps> = ({
+  open,
+  onClose,
+  onConfirm,
+  loading,
+}) => {
   return (
     <Dialog open={open} onClose={onClose}>
       <DialogTitle>Confirm Delete</DialogTitle>
@@ -15,8 +27,17 @@ const DeleteConfirmationDialog: React.FC<DeleteConfirmationDialogProps> = ({ ope
         <Typography>Are you sure you want to delete this item?</Typography>
       </DialogContent>
       <DialogActions>
-        <Button onClick={onClose} disabled={loading}>Cancel</Button>
-        <Button onClick={onConfirm} color="primary" variant="contained" disabled={loading}>Delete</Button>
+        <Button onClick={onClose} disabled={loading}>
+          Cancel
+        </Button>
+        <Button
+          onClick={onConfirm}
+          color="primary"
+          variant="contained"
+          disabled={loading}
+        >
+          Delete
+        </Button>
       </DialogActions>
     </Dialog>
   );

@@ -30,6 +30,16 @@ Below is the directory/folder structure for this project:
  - **`theme/ `**: Houses theme-related configurations or files for Material-UI (MUI) v5.
  - **`utility/`**: Contains additional utility modules used in the application.
 
+## Front end Tech stack used:
+
+ - **React**: A popular JavaScript library for building user interfaces.
+ - **Next.js**: A framework built on top of React, providing features like server-side rendering and routing.
+ - **Typescript**: A superset of JavaScript that adds static typing to the language, improving code quality and maintainability.
+ - **Material-UI (MUI v5)**: A popular React UI framework that provides pre-designed components and themes following the Material Design guidelines.
+ - **Redux**: A state management library for managing the application's global state.
+ - **Redux Saga**: A middleware library for managing side effects (e.g., asynchronous actions) in Redux.
+ - **Axios**: A popular JavaScript library used for making HTTP requests from the browser or Node.js, providing an easy-to-use interface for interacting with APIs.
+
 ## Requirements
 
 - [NodeJS >= 10](https://nodejs.org/en/download/)
@@ -78,8 +88,13 @@ There are two common Linting commands available in `package.json`:
 
 ESLint IDE plugins and extensions are available for most IDEs, such as the [ESLint plugin for VSCode](https://github.com/Microsoft/vscode-eslint), and it is recommended to install and utilize these plugins.
 
+## Back-end Tech stack used:
 
+To integrate this project with back-end framework, it is built with the following:
 
+- **Express.js with TypeScript**: Express.js is a popular Node.js web application framework, and in this project, it is used with TypeScript to provide a type-safe and structured approach to server-side development.
 
+- **MySQL Database**: MySQL is used as the relational database management system (RDBMS) to store and manage application data.
 
+- **mysql2**: `mysql2` is a Node.js driver for MySQL that provides fast and efficient access to the MySQL database server.
 ```

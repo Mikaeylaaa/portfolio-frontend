@@ -18,7 +18,6 @@ const LoginPage: React.FC = () => {
   const router = useRouter();
 
   const dispatch = useDispatch();
-  const loading = useSelector((state: RootState) => state.loginAuth.loading);
   const error = useSelector((state: RootState) => state.loginAuth.error);
 
   const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {

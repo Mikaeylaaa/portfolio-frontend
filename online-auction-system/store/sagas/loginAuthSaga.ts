@@ -6,12 +6,10 @@ import axios, { AxiosResponse } from "axios";
 // Define the type for the response from the login API
 interface LoginResponse {
   success: boolean;
-  // Add other properties in the response as needed
 }
 
 function* loginUser(action: { type: LoginAuthActionTypes; payload: User }) {
   const apiUrl = process.env.API_BASE_URL;
-  const debugMode = process.env.DEBUG === "true"; // Ensure boolean value for DEBUG
 
   try {
     // Make the GET request to your backend login API endpoint

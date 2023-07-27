@@ -1,4 +1,3 @@
-// store/index.ts
 import { combineReducers } from "redux";
 import { configureStore } from "@reduxjs/toolkit";
 import createSagaMiddleware from "redux-saga";
@@ -8,7 +7,6 @@ import registerAuthReducer from "./reducer/registerAuthReducer";
 import loginAuthReducer from "./reducer/loginAuthReducer";
 import logoutAuthReducer from "./reducer/logoutAuthReducer";
 import rootSaga from "./sagas/rootSaga";
-import { composeWithDevTools } from "redux-devtools-extension";
 import biddingItemReducer from "./reducer/biddingItemReducer";
 import getCreatedBidItemsReducer from "./reducer/getCreatedBidItemsReducer";
 import { biddingItemSaga } from "./sagas/biddingItemSaga";

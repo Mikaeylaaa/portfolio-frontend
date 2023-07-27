@@ -1,17 +1,13 @@
 import BiddingItemsTable from "@/app/common/components/BiddingItemsTable/BiddingItemsTable";
 import Header from "@/app/common/components/Header";
 import { Box, Button, Grid, Typography } from "@mui/material";
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState, fetchBiddingItems } from "../../../../store";
-import BiddingItemsDraftTable from "@/app/common/components/BiddingItemsTable/BiddingItemsDraftTable";
+import { RootState } from "../../../../store";
 import { fetchPublishedItemsRequest } from "../../../../store/actions/fetchPublishedItemAction";
 
 export const BiddingHomePublishedPage: React.FC = () => {
   const dispatch = useDispatch();
-  const createdBidItems = useSelector(
-    (state: RootState) => state.createdBidItemsState.biddingItems,
-  );
   const publishedItems = useSelector(
     (state: RootState) => state.fetchPublishedItemsState.publishedItems,
   );

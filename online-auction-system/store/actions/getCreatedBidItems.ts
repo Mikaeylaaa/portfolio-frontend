@@ -1,5 +1,3 @@
-// src/redux/actions.ts
-
 import { BiddingItem } from "../types";
 
 // Action Types

@@ -9,7 +9,7 @@ import DeleteConfirmationDialog from "./DeleteConfirmationDialog";
 import Toaster from "./Toaster";
 
 interface ItemDeleteButtonProps {
-  itemId: number; // Pass the itemId as a prop
+  itemId: number;
 }
 
 const ItemDeleteButton: React.FC<ItemDeleteButtonProps> = ({ itemId }) => {
@@ -48,14 +48,6 @@ const ItemDeleteButton: React.FC<ItemDeleteButtonProps> = ({ itemId }) => {
     <Box>
       <DeleteIcon fontSize="small" onClick={handleDeleteItem} color="error" />
       <Typography>{loading ? "Deleting..." : ""}</Typography>
-      {/* <Button
-        onClick={handleDeleteItem}
-        disabled={loading}
-        startIcon={<DeleteIcon />}
-      >
-        {loading ? "Deleting..." : "Delete Item"}
-      </Button> */}
-
       <DeleteConfirmationDialog
         open={confirmationDialogOpen}
         onClose={handleCancelDelete}
@@ -63,7 +55,7 @@ const ItemDeleteButton: React.FC<ItemDeleteButtonProps> = ({ itemId }) => {
         loading={loading}
       />
       <Toaster
-        message="Successfully deleted bid item!" // Message to display in the toaster
+        message="Successfully deleted bid item!"
         open={toasterOpen}
         onClose={handleToasterClose}
       />

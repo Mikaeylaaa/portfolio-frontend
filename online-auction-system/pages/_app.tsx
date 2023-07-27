@@ -11,7 +11,6 @@ import "@fontsource/poppins/400-italic.css"; // Specify weight and style
 
 import createEmotionCache from "../utility/createEmotionCache";
 import lightThemeOptions from "../theme/lightThemeOptions";
-// import '../styles/globals.css';
 interface MyAppProps extends AppProps {
   emotionCache?: EmotionCache;
 }

@@ -29,7 +29,6 @@ const BiddingItemsDraftTable: React.FC<BiddingItemsTableProps> = ({
 
   const handlePublishItem = async (itemId: number) => {
     try {
-      // Dispatch the action to publish the item and set the endTime
       dispatch(publishItemRequest(itemId));
       console.log("Item publish request dispatched successfully!");
       setToasterOpen(true);
@@ -78,7 +77,6 @@ const BiddingItemsDraftTable: React.FC<BiddingItemsTableProps> = ({
                     alignItems="center"
                   >
                     <Box sx={{ ml: 1, cursor: "pointer" }}>
-                      {/* Pass the itemId prop to the ItemDeleteButton */}
                       <ItemDeleteButton itemId={item.id} />
                     </Box>
                     <Box sx={{ ml: 1, cursor: "pointer" }}>

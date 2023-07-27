@@ -1,4 +1,3 @@
-// pages/Register.tsx
 import React, { useState } from "react";
 import { Box, Typography, Grid, Button, TextField } from "@mui/material";
 import Link from "next/link";
@@ -16,7 +15,6 @@ const RegistrationPage: React.FC = () => {
   const [toasterOpen, setToasterOpen] = useState(false);
 
   const dispatch = useDispatch();
-  const loading = useSelector((state: RootState) => state.registerAuth.loading);
   const error = useSelector((state: RootState) => state.registerAuth.error);
 
   const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {

@@ -1,4 +1,3 @@
-import axios, { AxiosResponse } from "axios";
 import { BiddingItem } from "@/app/routes/bidding/types";
 import { AddBiddingItemActionTypes } from "../types";
 

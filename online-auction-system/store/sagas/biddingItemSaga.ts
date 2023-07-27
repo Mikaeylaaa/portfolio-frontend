@@ -1,4 +1,4 @@
-import { put, takeEvery, call, takeLatest } from "redux-saga/effects";
+import { put, takeLatest } from "redux-saga/effects";
 import axios, { AxiosResponse } from "axios";
 import { addBiddingItemSuccess, addBiddingItemFailure } from "../actions";
 import { AddBiddingItemActionTypes, BiddingItem } from "../types";

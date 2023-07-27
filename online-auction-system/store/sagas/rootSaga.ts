@@ -1,4 +1,3 @@
-// sagas/index.ts
 import { all } from "redux-saga/effects";
 import { watchLogin } from "./loginAuthSaga";
 import { watchLogout } from "./logoutAuthSaga";

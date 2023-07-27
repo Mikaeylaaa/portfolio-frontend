@@ -1,5 +1,3 @@
-// src/app/routes/bidding/biddingItemActions.ts
-
 import { BiddingItem } from "../types";
 
 export const FETCH_PUBLISHED_ITEMS_REQUEST = "FETCH_PUBLISHED_ITEMS_REQUEST";

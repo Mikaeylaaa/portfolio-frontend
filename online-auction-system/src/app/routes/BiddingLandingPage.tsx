@@ -1,6 +1,8 @@
 import { Button, Grid, Typography } from "@mui/material";
 import Link from "next/link";
 import React from "react";
+import HowToRegIcon from "@mui/icons-material/HowToReg";
+import LoginIcon from "@mui/icons-material/Login";
 
 export const BiddingLandingPage: React.FC = () => {
   return (
@@ -24,14 +26,26 @@ export const BiddingLandingPage: React.FC = () => {
       </section>
       <Grid item xs={12}>
         <Link href="/register">
-          <Button variant="contained" color="primary" size="medium" fullWidth>
+          <Button
+            variant="contained"
+            color="primary"
+            size="medium"
+            fullWidth
+            startIcon={<HowToRegIcon fontSize="small" />}
+          >
             Register
           </Button>
         </Link>
       </Grid>
       <Grid item xs={12}>
         <Link href="/login">
-          <Button variant="contained" color="primary" size="medium" fullWidth>
+          <Button
+            variant="contained"
+            color="primary"
+            size="medium"
+            fullWidth
+            startIcon={<LoginIcon fontSize="small" />}
+          >
             Login
           </Button>
         </Link>

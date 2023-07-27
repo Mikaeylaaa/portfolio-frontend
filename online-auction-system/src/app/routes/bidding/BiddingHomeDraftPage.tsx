@@ -1,11 +1,10 @@
 import BiddingItemsTable from "@/app/common/components/BiddingItemsTable/BiddingItemsTable";
 import Header from "@/app/common/components/Header";
-import { Box, Button, Grid, Typography } from "@mui/material";
-import React, { useState, useEffect } from "react";
+import { Box, Grid, Typography } from "@mui/material";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState, fetchBiddingItems } from "../../../../store";
 import BiddingItemsDraftTable from "@/app/common/components/BiddingItemsTable/BiddingItemsDraftTable";
-import { fetchPublishedItemsRequest } from "../../../../store/actions/fetchPublishedItemAction";
 
 export const BiddingHomeDraftPage: React.FC = () => {
   const dispatch = useDispatch();

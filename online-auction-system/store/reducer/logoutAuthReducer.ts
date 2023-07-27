@@ -1,4 +1,3 @@
-// reducers/authReducer.ts
 // Action Types
 const LOGOUT_SUCCESS = "LOGOUT_SUCCESS";
 

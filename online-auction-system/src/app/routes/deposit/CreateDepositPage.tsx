@@ -25,11 +25,6 @@ const CreateDepositPage: React.FC = () => {
   ) as UserInfo | null;
   const bidUsers: UserInfo[] = auctionUsers ? [auctionUsers] : [];
 
-  const initialDeposit: DepositMoneyFormValues = {
-    userId: userId || 0,
-    amount: 0,
-  };
-
   const [toasterOpen, setToasterOpen] = useState(false);
 
   const handleDeposit = async (deposit: DepositMoneyFormValues) => {

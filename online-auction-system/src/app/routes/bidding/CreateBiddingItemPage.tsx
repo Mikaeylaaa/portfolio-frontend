@@ -1,14 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Grid, Box, Typography } from "@mui/material";
-import { BiddingItem } from "@/app/routes/bidding/types";
 import BiddingItemForm, {
   BiddingItemFormValues,
 } from "@/app/common/components/BiddingItem/BiddingItemForm";
 import { addBiddingItem, fetchExistingItems } from "../../../../store";
 import { useRouter } from "next/router";
 import Toaster from "@/app/common/components/Toaster";
-import { updateBiddingItemRequest } from "../../../../store/actions/updateItemAction";
 
 const CreateBiddingItemPage: React.FC = () => {
   const dispatch = useDispatch();
@@ -25,7 +23,6 @@ const CreateBiddingItemPage: React.FC = () => {
   const [toasterOpen, setToasterOpen] = useState(false);
 
   const handleSave = async (bidItem: BiddingItemFormValues) => {
-    // Perform any additional validation or logic before saving the item
     if (
       !bidItem.itemName ||
       !bidItem.itemPrice ||
@@ -88,7 +85,6 @@ const CreateBiddingItemPage: React.FC = () => {
           />
         </Grid>
       </Grid>
-      {/* Rest of the component */}
       <Toaster
         message={"Successfully added bid item!"}
         open={toasterOpen}

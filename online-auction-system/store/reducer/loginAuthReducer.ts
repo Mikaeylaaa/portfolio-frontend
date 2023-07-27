@@ -1,4 +1,3 @@
-// store/authReducer.ts
 import { Reducer } from "redux";
 import { LoginAuthActionTypes, LoginAuthState } from "../types";
 

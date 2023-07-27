@@ -1,5 +1,3 @@
-// src/redux/reducers.ts
-
 import { Reducer } from "redux";
 import {
   FETCH_BIDDING_ITEMS_FAILURE,
@@ -40,6 +38,3 @@ const getCreatedBidItemsReducer: Reducer<CreatedBidItemState> = (
 };
 
 export default getCreatedBidItemsReducer;
-
-// // Define RootState type for useSelector
-// export type RootState = ReturnType<typeof appReducer>;

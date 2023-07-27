@@ -1,11 +1,8 @@
-// components/Header.tsx
 import React, { useState } from "react";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
-import MenuIcon from "@mui/icons-material/Menu";
-import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
@@ -21,10 +18,6 @@ import { Logout } from "@mui/icons-material";
 const Header: React.FC = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const dispatch = useDispatch();
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const isAuthenticated = useSelector(
-    (state: RootState) => state.logoutAuth.isAuthenticated,
-  );
 
   const router = useRouter();
   const open = Boolean(anchorEl);
@@ -38,9 +31,9 @@ const Header: React.FC = () => {
   };
 
   const handleLogout = async () => {
-    await dispatch(logoutRequest()); // Dispatch the logout action
+    await dispatch(logoutRequest());
 
-    setAnchorEl(null); // Close the submenu after logout
+    setAnchorEl(null);
 
     router.push(`/home`);
   };
@@ -134,7 +127,6 @@ const Header: React.FC = () => {
               Deposit
             </Typography>
           </MenuItem>
-          {/* {isAuthenticated && <MenuItem onClick={handleLogout}>Logout</MenuItem>} */}
           <MenuItem onClick={handleLogout}>
             <Logout fontSize="small" />
             <Typography variant="body2" sx={{ ml: 1 }}>

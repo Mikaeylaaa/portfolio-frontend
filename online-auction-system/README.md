@@ -53,7 +53,7 @@ Before launching the application or running any tests, you must run `yarn instal
 
 ### Launch App in Development Mode
 
-To run the application in a production-like environment, two commands must be executed:
+To run the application, two commands must be executed:
 
 - **`yarn build`**: Compiles and builds the code in a manner suitable use
 - **`yarn dev`**: Launches the Next.js server and serves the `development` ready code that was built in the previous command.

@@ -8,7 +8,7 @@ Clone the repository:
 
 ```bash
 git clone https://github.com/Mikaeylaaa/full-stack-coding-assignment-ui.git
-
+```
 ## Project Structure
 
 Below is the directory/folder structure for this project:

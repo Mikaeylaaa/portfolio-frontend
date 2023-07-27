@@ -97,4 +97,3 @@ To integrate this project with back-end framework, it is built with the followin
 - **MySQL Database**: MySQL is used as the relational database management system (RDBMS) to store and manage application data.
 
 - **mysql2**: `mysql2` is a Node.js driver for MySQL that provides fast and efficient access to the MySQL database server.
-```
